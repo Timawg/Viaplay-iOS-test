@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class SectionsTableViewController: UITableViewController, ViewControllerProtocol {
+protocol SectionsTableViewControllerProtocol: ViewControllerProtocol {
+    var viewModel: SectionsViewModelProtocol { get set }
+}
+
+final class SectionsTableViewController: UITableViewController, SectionsTableViewControllerProtocol {
     var _viewModel: ViewModelProtocol
     var viewModel: SectionsViewModelProtocol {
         get {

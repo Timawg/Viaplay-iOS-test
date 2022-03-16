@@ -7,7 +7,11 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, ViewControllerProtocol {
+protocol DetailViewControllerProtocol: ViewControllerProtocol {
+    var viewModel: DetailViewModelProtocol { get set }
+}
+
+final class DetailViewController: UIViewController, DetailViewControllerProtocol {
     
     private lazy var titleLabel = UILabel()
     private lazy var descriptionLabel = UILabel()
