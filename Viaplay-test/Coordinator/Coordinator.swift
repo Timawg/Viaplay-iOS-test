@@ -41,6 +41,7 @@ final class Coordinator: CoordinatorProtocol {
     
     func present(errorMessage: String) {
         let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+        alert.addAction(.init(title: "Dismiss", style: .cancel, handler: nil))
         navigationController.present(alert, animated: true, completion: nil)
     }    
 }
