@@ -33,18 +33,20 @@ final class SectionsTableViewController: UITableViewController, ViewControllerPr
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.separatorStyle = .none
-        viewModel.onDataRetrieved = { [weak self] in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-                self?.refreshControl?.endRefreshing()
-            }
-        }
-        
+        tableView.separatorStyle = .none        
         refreshControl = UIRefreshControl(frame: .zero, primaryAction: .init(handler: { [weak self] _ in
             self?.viewModel.retrieveData(ignoreCache: true)
         }))
         
+        viewModel.onDataRetrieved = { [tableView, refreshControl] in
+            DispatchQueue.main.async {
+                tableView?.reloadData()
+                if refreshControl?.isRefreshing ?? false {
+                    refreshControl?.endRefreshing()
+                }
+            }
+        }
+                
         viewModel.retrieveData(ignoreCache: false)
     }
     

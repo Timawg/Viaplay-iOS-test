@@ -10,6 +10,13 @@ import Foundation
 enum NetworkError: Error {
     case error(Error?)
     case decodingError
+    
+    var localizedDescription: String {
+        switch self {
+        case .error(let error): return error?.localizedDescription ?? "Unknown error"
+        case .decodingError: return "Decoding error"
+        }
+    }
 }
 
 struct NetworkResponseModel: Decodable {
