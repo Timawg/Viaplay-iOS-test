@@ -21,7 +21,8 @@ protocol SectionsViewModelProtocol: ViewModelProtocol {
 final class SectionsViewModel: SectionsViewModelProtocol {
     
     @Injected(\.networkService) private var networkService: NetworkServiceProtocol
-    private let baseURL = URL(string: "https://content.viaplay.se/ios-se")
+    private static let baseURLString = "https://content.viaplay.se/ios-se"
+    private let baseURL = URL(string: baseURLString)
     private let url: URL?
     weak var coordinator: Coordinator?
     var title: String
@@ -50,7 +51,10 @@ final class SectionsViewModel: SectionsViewModelProtocol {
                 self?.model = model
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self?.coordinator?.present(errorMessage: error.localizedDescription)
+                    self?.onDataRetrieved?()
+                    self?.coordinator?.present(errorMessage: error.localizedDescription, handler: {
+                        self?.retrieveData(ignoreCache: ignoreCache)
+                    })
                 }
             }
         }

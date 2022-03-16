@@ -16,7 +16,7 @@ enum HTTPRequestMethod: String {
 }
 
 protocol NetworkServiceProtocol {
-    func request<T: Codable>(method: HTTPRequestMethod, url: URL, cachePolicy: URLRequest.CachePolicy, completion: @escaping (Result<T, NetworkError>) -> Void)
+    func request<T: Decodable>(method: HTTPRequestMethod, url: URL, cachePolicy: URLRequest.CachePolicy, completion: @escaping (Result<T, NetworkError>) -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {
@@ -31,7 +31,7 @@ final class NetworkService: NetworkServiceProtocol {
                                    directory: nil)
     }
 
-    func request<T: Codable>(method: HTTPRequestMethod, url: URL, cachePolicy: URLRequest.CachePolicy = .returnCacheDataElseLoad, completion: @escaping (Result<T, NetworkError>) -> Void) {
+    func request<T: Decodable>(method: HTTPRequestMethod, url: URL, cachePolicy: URLRequest.CachePolicy = .returnCacheDataElseLoad, completion: @escaping (Result<T, NetworkError>) -> Void) {
         var request = URLRequest(url: url, cachePolicy: cachePolicy)
         request.httpMethod = method.rawValue
         let task = session.dataTask(with: request) { data, response, error in

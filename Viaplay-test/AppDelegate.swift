@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sectionsViewController = SectionsTableViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: sectionsViewController)
         coordinator = Coordinator(navigationController: navigationController, window: window)
-        coordinator?.activate()
+        coordinator?.setup()
         viewModel.coordinator = coordinator
         return true
     }

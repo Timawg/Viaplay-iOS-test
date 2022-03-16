@@ -7,29 +7,40 @@
 
 import UIKit
 
-final class HeaderView: UIView {
-    
-    private var titleLabel: UILabel
-    private var descriptionLabel: UILabel
+final class HeaderView: UITableViewHeaderFooterView {
 
-    override init(frame: CGRect) {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        titleLabel = UILabel()
+    private lazy var titleLabel = UILabel()
+    private lazy var descriptionLabel = UILabel()
+
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        setupLabel()
+        setupDescription()
+        setupStackview()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupLabel() {
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
-        descriptionLabel = UILabel()
+    }
+    
+    private func setupDescription() {
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textAlignment = .center
-        super.init(frame: frame)
+    }
+    
+    func setupStackview() {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 5
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(descriptionLabel)
         addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        stackView.constraintToFillSuperView()
     }
     
     func set(title: String, description: String) {
@@ -37,9 +48,5 @@ final class HeaderView: UIView {
         self.titleLabel.sizeToFit()
         self.descriptionLabel.text = description
         self.descriptionLabel.sizeToFit()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

@@ -19,6 +19,9 @@
 		F51EA65627E0BB7F002BF962 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51EA65527E0BB7F002BF962 /* Injector.swift */; };
 		F51EA65927E0FA00002BF962 /* NetworkResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51EA65827E0FA00002BF962 /* NetworkResponseModel.swift */; };
 		F51EA65B27E0FAED002BF962 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51EA65A27E0FAED002BF962 /* Coordinator.swift */; };
+		F5334E2627E20C5000228998 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5334E2527E20C5000228998 /* DetailViewModel.swift */; };
+		F5334E2827E20C6A00228998 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5334E2727E20C6A00228998 /* DetailViewController.swift */; };
+		F541A6D427E23EA200149B2A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541A6D327E23EA200149B2A /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		F51EA65527E0BB7F002BF962 /* Injector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		F51EA65827E0FA00002BF962 /* NetworkResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponseModel.swift; sourceTree = "<group>"; };
 		F51EA65A27E0FAED002BF962 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		F5334E2527E20C5000228998 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		F5334E2727E20C6A00228998 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F541A6D327E23EA200149B2A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,7 @@
 		F51EA63027E0404C002BF962 /* Viaplay-test */ = {
 			isa = PBXGroup;
 			children = (
+				F541A6D227E23E5200149B2A /* Extension */,
 				F51EA65427E0BB55002BF962 /* Dependency Injection */,
 				F51EA65327E0BB4D002BF962 /* Coordinator */,
 				F51EA64D27E08B1A002BF962 /* Service */,
@@ -87,6 +94,7 @@
 				F51EA64E27E08B32002BF962 /* View */,
 				F51EA63527E0404C002BF962 /* SectionsViewController.swift */,
 				F51EA65127E099C2002BF962 /* ViewControllerProtocol.swift */,
+				F5334E2727E20C6A00228998 /* DetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -96,6 +104,7 @@
 			children = (
 				F51EA64727E06A0B002BF962 /* SectionsViewModel.swift */,
 				F51EA64F27E0993A002BF962 /* ViewModelProtocol.swift */,
+				F5334E2527E20C5000228998 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -139,6 +148,14 @@
 				F51EA65827E0FA00002BF962 /* NetworkResponseModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F541A6D227E23E5200149B2A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F541A6D327E23EA200149B2A /* UIView+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,14 +229,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F51EA64A27E082CA002BF962 /* HeaderView.swift in Sources */,
+				F541A6D427E23EA200149B2A /* UIView+Extension.swift in Sources */,
 				F51EA63627E0404C002BF962 /* SectionsViewController.swift in Sources */,
 				F51EA65B27E0FAED002BF962 /* Coordinator.swift in Sources */,
+				F5334E2827E20C6A00228998 /* DetailViewController.swift in Sources */,
 				F51EA65927E0FA00002BF962 /* NetworkResponseModel.swift in Sources */,
 				F51EA65027E0993A002BF962 /* ViewModelProtocol.swift in Sources */,
 				F51EA63227E0404C002BF962 /* AppDelegate.swift in Sources */,
 				F51EA65227E099C2002BF962 /* ViewControllerProtocol.swift in Sources */,
 				F51EA64827E06A0B002BF962 /* SectionsViewModel.swift in Sources */,
 				F51EA64627E040BD002BF962 /* NetworkService.swift in Sources */,
+				F5334E2627E20C5000228998 /* DetailViewModel.swift in Sources */,
 				F51EA65627E0BB7F002BF962 /* Injector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

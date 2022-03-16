@@ -12,7 +12,7 @@ enum NetworkError: Error {
     case decodingError
 }
 
-struct NetworkResponseModel: Codable {
+struct NetworkResponseModel: Decodable {
     let title: String
     let description: String
     let links: Links
@@ -24,7 +24,7 @@ struct NetworkResponseModel: Codable {
     }
 }
 
-struct Links: Codable {
+struct Links: Decodable {
     let viaplaySections: [ViaplaySection]
     
     enum CodingKeys: String, CodingKey {
@@ -32,7 +32,7 @@ struct Links: Codable {
     }
 }
 
-struct ViaplaySection: Codable {
+struct ViaplaySection: Decodable {
     let title: String
     private let href: String
     

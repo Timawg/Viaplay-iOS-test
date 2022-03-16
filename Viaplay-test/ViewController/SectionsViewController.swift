@@ -33,6 +33,7 @@ final class SectionsTableViewController: UITableViewController, ViewControllerPr
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.separatorStyle = .none
         viewModel.onDataRetrieved = { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -56,14 +57,12 @@ final class SectionsTableViewController: UITableViewController, ViewControllerPr
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = HeaderView()
-        headerView.set(title: viewModel.model.title, description: viewModel.model.description)
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? HeaderView ?? HeaderView(reuseIdentifier: "header")
+        headerView.set(title: viewModel.model.title,
+                       description: viewModel.model.description)
         return headerView
     }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return viewModel.model.description
-    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.model.links.viaplaySections.count
     }
@@ -71,6 +70,8 @@ final class SectionsTableViewController: UITableViewController, ViewControllerPr
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = viewModel.model.links.viaplaySections[indexPath.row].title
+        cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -81,4 +82,3 @@ final class SectionsTableViewController: UITableViewController, ViewControllerPr
         viewModel.selectSection(url: url, title: viewModel.title(atIndex: indexPath.row))
     }
 }
-

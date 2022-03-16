@@ -11,13 +11,13 @@ import UIKit
 protocol CoordinatorProtocol {
     var navigationController: UINavigationController { get }
     init(navigationController: UINavigationController, window: UIWindow?)
-    func activate()
+    func setup()
     func coordinate(toUrl: URL, withTitle: String)
-    func present(errorMessage: String)
+    func present(errorMessage: String, handler: (() -> Void)?)
 }
 
 final class Coordinator: CoordinatorProtocol {
-    
+
     private var window: UIWindow?
     var navigationController: UINavigationController
     
@@ -26,22 +26,27 @@ final class Coordinator: CoordinatorProtocol {
         self.window = window
     }
     
-    func activate() {
+    func setup() {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        navigationController.viewControllers.first?.viewDidLoad()
+        navigationController.viewControllers.first?.loadViewIfNeeded()
     }
     
     func coordinate(toUrl url: URL, withTitle title: String) {
-        let viewModel = SectionsViewModel(title: title, url: url)
+        let viewModel = DetailViewModel(title: title, url: url)
         viewModel.coordinator = self
-        let viewController = SectionsTableViewController(viewModel: viewModel)
+        let viewController = DetailViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func present(errorMessage: String) {
+    func present(errorMessage: String, handler: (() -> Void)? = nil) {
         let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
         alert.addAction(.init(title: "Dismiss", style: .cancel, handler: nil))
+        if let handler = handler {
+            alert.addAction(.init(title: "Retry", style: .default, handler:  { _ in
+                handler()
+            }))
+        }
         navigationController.present(alert, animated: true, completion: nil)
     }    
 }
