@@ -33,6 +33,7 @@ final class SectionsTableViewController: UITableViewController, ViewControllerPr
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = viewModel.title
         tableView.separatorStyle = .none        
         refreshControl = UIRefreshControl(frame: .zero, primaryAction: .init(handler: { [weak self] _ in
             self?.viewModel.retrieveData(ignoreCache: true)
@@ -48,10 +49,6 @@ final class SectionsTableViewController: UITableViewController, ViewControllerPr
         }
                 
         viewModel.retrieveData(ignoreCache: false)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        title = viewModel.title
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
