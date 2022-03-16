@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow()
-        let viewModel = SectionsViewModel()
-        let sectionsViewController = SectionsTableViewController(viewModel: viewModel)
+        var viewModel = ViewModelFactory.createViewModel(type: .section(nil, nil))
+        let sectionsViewController = ViewControllerFactory.createViewController(type: .section(viewModel))
         let navigationController = UINavigationController(rootViewController: sectionsViewController)
         coordinator = Coordinator(navigationController: navigationController, window: window)
         coordinator?.setup()

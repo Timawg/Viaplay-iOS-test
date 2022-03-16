@@ -38,7 +38,8 @@ class DetailViewController: UIViewController, ViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = viewModel.title
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
+        view.tintColor = .label
         setupStackview()
         viewModel.onDataRetrieved = { [weak self, viewModel] in
             self?.set(title: viewModel.content.title,

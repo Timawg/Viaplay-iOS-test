@@ -22,6 +22,8 @@
 		F5334E2627E20C5000228998 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5334E2527E20C5000228998 /* DetailViewModel.swift */; };
 		F5334E2827E20C6A00228998 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5334E2727E20C6A00228998 /* DetailViewController.swift */; };
 		F541A6D427E23EA200149B2A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541A6D327E23EA200149B2A /* UIView+Extension.swift */; };
+		F541A6D827E282DA00149B2A /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541A6D727E282DA00149B2A /* ViewControllerFactory.swift */; };
+		F541A6DA27E282EA00149B2A /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541A6D927E282EA00149B2A /* ViewModelFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		F5334E2527E20C5000228998 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		F5334E2727E20C6A00228998 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F541A6D327E23EA200149B2A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		F541A6D727E282DA00149B2A /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		F541A6D927E282EA00149B2A /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 		F51EA64B27E08AFB002BF962 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F541A6D527E282BC00149B2A /* Factory */,
 				F51EA64E27E08B32002BF962 /* View */,
 				F51EA63527E0404C002BF962 /* SectionsViewController.swift */,
 				F51EA65127E099C2002BF962 /* ViewControllerProtocol.swift */,
@@ -102,6 +107,7 @@
 		F51EA64C27E08B0E002BF962 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F541A6D627E282C600149B2A /* Factory */,
 				F51EA64727E06A0B002BF962 /* SectionsViewModel.swift */,
 				F51EA64F27E0993A002BF962 /* ViewModelProtocol.swift */,
 				F5334E2527E20C5000228998 /* DetailViewModel.swift */,
@@ -156,6 +162,22 @@
 				F541A6D327E23EA200149B2A /* UIView+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		F541A6D527E282BC00149B2A /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				F541A6D727E282DA00149B2A /* ViewControllerFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		F541A6D627E282C600149B2A /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				F541A6D927E282EA00149B2A /* ViewModelFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +251,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F51EA64A27E082CA002BF962 /* HeaderView.swift in Sources */,
+				F541A6D827E282DA00149B2A /* ViewControllerFactory.swift in Sources */,
 				F541A6D427E23EA200149B2A /* UIView+Extension.swift in Sources */,
+				F541A6DA27E282EA00149B2A /* ViewModelFactory.swift in Sources */,
 				F51EA63627E0404C002BF962 /* SectionsViewController.swift in Sources */,
 				F51EA65B27E0FAED002BF962 /* Coordinator.swift in Sources */,
 				F5334E2827E20C6A00228998 /* DetailViewController.swift in Sources */,

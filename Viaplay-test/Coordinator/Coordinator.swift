@@ -33,9 +33,9 @@ final class Coordinator: CoordinatorProtocol {
     }
     
     func coordinate(toUrl url: URL, withTitle title: String) {
-        let viewModel = DetailViewModel(title: title, url: url)
+        var viewModel = ViewModelFactory.createViewModel(type: .detail(title, url))
         viewModel.coordinator = self
-        let viewController = DetailViewController(viewModel: viewModel)
+        let viewController = ViewControllerFactory.createViewController(type: .detail(viewModel))
         navigationController.pushViewController(viewController, animated: true)
     }
     
