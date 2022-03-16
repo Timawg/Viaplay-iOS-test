@@ -11,7 +11,10 @@ final class SectionsTableViewController: UITableViewController, ViewControllerPr
     var _viewModel: ViewModelProtocol
     var viewModel: SectionsViewModelProtocol {
         get {
-            return _viewModel as! SectionsViewModelProtocol
+            guard let viewModel = _viewModel as? SectionsViewModel else {
+                fatalError("Programming error")
+            }
+            return viewModel
         }
         set {
             _viewModel = newValue

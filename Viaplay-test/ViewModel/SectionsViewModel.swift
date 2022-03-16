@@ -39,15 +39,19 @@ final class SectionsViewModel: SectionsViewModelProtocol {
     
     func retrieveData(ignoreCache: Bool = false) {
         guard let url = url else {
+            coordinator?.present(errorMessage: "Invalid URL")
             return
         }
 
-        networkService.request(method: .GET, url: url, cachePolicy: ignoreCache ? .reloadIgnoringLocalCacheData : .returnCacheDataElseLoad) { [weak self] (result: Result<NetworkResponseModel, NetworkError>)  in
+        let cachePolicy: URLRequest.CachePolicy = ignoreCache ? .reloadIgnoringLocalCacheData : .returnCacheDataElseLoad
+        networkService.request(method: .GET, url: url, cachePolicy: cachePolicy) { [weak self] (result: Result<NetworkResponseModel, NetworkError>)  in
             switch result {
             case .success(let model):
                 self?.model = model
             case .failure(let error):
-                self?.coordinator?.present(errorMessage: error.localizedDescription)
+                DispatchQueue.main.async {
+                    self?.coordinator?.present(errorMessage: error.localizedDescription)
+                }
             }
         }
     }
