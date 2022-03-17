@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum HTTPRequestMethod: String {
+public enum HTTPRequestMethod: String {
     case GET
     case POST
     case PUT
@@ -15,7 +15,7 @@ enum HTTPRequestMethod: String {
     case DELETE
 }
 
-protocol NetworkServiceProtocol {
+public protocol NetworkServiceProtocol {
     func request<T: Decodable>(method: HTTPRequestMethod, url: URL, cachePolicy: URLRequest.CachePolicy, completion: @escaping (Result<T, NetworkError>) -> Void)
 }
 

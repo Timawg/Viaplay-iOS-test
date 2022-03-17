@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NetworkError: Error {
+public enum NetworkError: Error {
     case error(Error?)
     case decodingError
     
@@ -19,10 +19,16 @@ enum NetworkError: Error {
     }
 }
 
-struct NetworkResponseModel: Decodable {
-    let title: String
-    let description: String
-    let links: Links
+public struct NetworkResponseModel: Decodable {
+    public let title: String
+    public let description: String
+    public let links: Links
+    
+    public init(title: String, description: String, links: Links) {
+        self.title = title
+        self.description = description
+        self.links = links
+    }
     
     enum CodingKeys: String, CodingKey {
         case title
@@ -31,19 +37,28 @@ struct NetworkResponseModel: Decodable {
     }
 }
 
-struct Links: Decodable {
-    let viaplaySections: [ViaplaySection]
+public struct Links: Decodable {
+    public let viaplaySections: [ViaplaySection]
+    
+    public init(viaplaySections: [ViaplaySection]) {
+        self.viaplaySections = viaplaySections
+    }
     
     enum CodingKeys: String, CodingKey {
         case viaplaySections = "viaplay:sections"
     }
 }
 
-struct ViaplaySection: Decodable {
-    let title: String
-    private let href: String
+public struct ViaplaySection: Decodable {
+    public let title: String
+    public let href: String
     
-    var fixedHref: String {
+    public init(title: String, href: String) {
+        self.title = title
+        self.href = href
+    }
+    
+    public var fixedHref: String {
         return href.replacingOccurrences(of: "{?dtg}", with: "")
     }
 }

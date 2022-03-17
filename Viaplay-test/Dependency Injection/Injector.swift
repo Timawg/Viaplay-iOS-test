@@ -20,25 +20,21 @@ struct Injected<T> {
     }
 }
 
-protocol InjectorProtocol {
+public protocol InjectorProtocol {
     associatedtype Value
     static var currentValue: Self.Value { get set }
 }
 
-private struct NetworkServiceInjector: InjectorProtocol {
-    static var currentValue: NetworkServiceProtocol = NetworkService()
-}
-
-struct InjectedValues {
+public class InjectedValues {
     
     private static var current = InjectedValues()
     
-    static subscript<T>(injector: T.Type) -> T.Value where T : InjectorProtocol {
+    static public subscript<T>(injector: T.Type) -> T.Value where T : InjectorProtocol {
         get { injector.currentValue }
         set { injector.currentValue = newValue }
     }
     
-    static subscript<T>(_ keyPath: WritableKeyPath<InjectedValues, T>) -> T {
+    static public subscript<T>(_ keyPath: WritableKeyPath<InjectedValues, T>) -> T {
         get { current[keyPath: keyPath] }
         set { current[keyPath: keyPath] = newValue }
     }
@@ -50,3 +46,8 @@ extension InjectedValues {
         set { Self[NetworkServiceInjector.self] = newValue }
     }
 }
+
+private struct NetworkServiceInjector: InjectorProtocol {
+    static var currentValue: NetworkServiceProtocol = NetworkService()
+}
+

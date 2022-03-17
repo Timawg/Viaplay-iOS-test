@@ -11,7 +11,7 @@ protocol SectionsTableViewControllerProtocol: ViewControllerProtocol {
     var viewModel: SectionsViewModelProtocol { get set }
 }
 
-final class SectionsTableViewController: UITableViewController, SectionsTableViewControllerProtocol {
+final class SectionsTableViewController: UITableViewController, ViewControllerProtocol {
     var _viewModel: ViewModelProtocol
     var viewModel: SectionsViewModelProtocol {
         get {
