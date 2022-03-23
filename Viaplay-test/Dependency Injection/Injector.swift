@@ -25,7 +25,7 @@ public protocol InjectorProtocol {
     static var currentValue: Self.Value { get set }
 }
 
-public class InjectedValues {
+public struct InjectedValues {
     
     private static var current = InjectedValues()
     

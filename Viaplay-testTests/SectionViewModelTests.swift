@@ -10,13 +10,11 @@ import XCTest
 
 class SectionViewModelTests: XCTestCase {
     
-    @Injected(\.networkService) private var networkService: NetworkServiceProtocol
-
     func testSuccessfulRequest() throws {
         let service = NetworkServiceMock()
         let model = NetworkResponseModel(title: "Test", description: "Test Description", links: .init(viaplaySections: [.init(title: "Films", href: "www.viaplay.com/films")]))
         service.set(result: .success(model))
-        InjectedValues().networkService = service
+        InjectedValues[\.networkService] = service
         let viewModel = ViewModelFactory.createViewModel(type: .section(nil, nil)) as! SectionsViewModel
         let exp = expectation(description: "Successful request")
         viewModel.onDataRetrieved = {
@@ -36,7 +34,7 @@ class SectionViewModelTests: XCTestCase {
     func testFailedRequest() throws {
         let service = NetworkServiceMock()
         service.set(result: .failure(.error(nil)))
-        InjectedValues().networkService = service
+        InjectedValues[\.networkService] = service
         let viewModel = ViewModelFactory.createViewModel(type: .section(nil, nil)) as! SectionsViewModel
         let exp = expectation(description: "Failed request")
         viewModel.onDataRetrieved = {

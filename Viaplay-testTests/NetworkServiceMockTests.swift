@@ -14,7 +14,7 @@ class NetworkServiceMockTests: XCTestCase {
     
     override class func setUp() {
         super.setUp()
-        InjectedValues().networkService = NetworkServiceMock()
+        InjectedValues[\.networkService] = NetworkServiceMock()
     }
 
     func testSuccess() throws {

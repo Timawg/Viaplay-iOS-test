@@ -12,7 +12,7 @@ protocol DetailViewControllerProtocol: ViewControllerProtocol {
 }
 
 final class DetailViewController: UIViewController, DetailViewControllerProtocol {
-    
+
     private lazy var titleLabel = UILabel()
     private lazy var descriptionLabel = UILabel()
     

@@ -10,11 +10,6 @@ import XCTest
 
 class ViewControllerFactoryTests: XCTestCase {
 
-    override class func setUp() {
-        super.setUp()
-        InjectedValues().networkService = NetworkServiceMock()
-    }
-
     func testSection() throws {
         let viewModel = ViewModelFactory.createViewModel(type: .section(nil, nil))
         let viewController = ViewControllerFactory.createViewController(type: .section(viewModel))

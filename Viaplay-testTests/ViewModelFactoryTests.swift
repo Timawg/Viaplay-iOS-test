@@ -10,11 +10,6 @@ import XCTest
 
 class ViewModelFactoryTests: XCTestCase {
     
-    override class func setUp() {
-        super.setUp()
-        InjectedValues().networkService = NetworkServiceMock()
-    }
-    
     func testSection() throws {
         guard let viewModel = ViewModelFactory.createViewModel(type: .section("Test", URL(string: "www.viaplay.com/test")!)) as? SectionsViewModel else {
             XCTFail("Incorrect viewModel type")

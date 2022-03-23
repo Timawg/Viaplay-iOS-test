@@ -39,8 +39,8 @@ final class SectionsTableViewController: UITableViewController, ViewControllerPr
         
         title = viewModel.title
         tableView.separatorStyle = .none        
-        refreshControl = UIRefreshControl(frame: .zero, primaryAction: .init(handler: { [weak self] _ in
-            self?.viewModel.retrieveData(ignoreCache: true)
+        refreshControl = UIRefreshControl(frame: .zero, primaryAction: .init(handler: { [viewModel] _ in
+            viewModel.retrieveData(ignoreCache: true)
         }))
         
         viewModel.onDataRetrieved = { [tableView, refreshControl] in
